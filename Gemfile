@@ -3,9 +3,10 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in rawk_log.gemspec
 gemspec
 
+gem "bundler", (RUBY_VERSION >= '2.3.0' ? '> 1.3' : '~> 1.3')
 gem 'rake', RUBY_VERSION < '1.9' ? '< 11.0' : '>= 11.0'
 
-platforms :ruby_22, :ruby_23 do
+if RUBY_VERSION >= '2.2' # work around missing ruby_26 platform error
   gem 'test-unit'
   gem 'minitest'
 end
